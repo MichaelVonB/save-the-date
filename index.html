@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save the Date | Isabella & Michael</title>
+
+    <!-- Einbindung einer modernen, freundlichen Schriftart von Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @font-face {
+        font-family: "MyCustomFont";
+        src: url("./WhisperingSignature.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      /* PHASE 2: CSS - Modernes UI, Robust, Responsiv */
+
+      /* Grundlegende Resets und Schrifteinstellungen */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "Poppins", sans-serif;
+        color: #ffffff;
+        background: linear-gradient(rgb(0 149 199), rgb(127 125 126));
+      }
+
+      .video-container {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        min-width: 100%;
+        /* max-height: 100%; */
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .bg-video {
+        max-height: 100%;
+        /* min-width: 100%; */
+        min-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      body {
+        overflow: hidden; /* Verhindert Scrollen auf der Hauptseite */
+      }
+
+      .bride-groom {
+        font-family: "MyCustomFont", cursive;
+      }
+
+      /* Hauptcontainer für den zentrierten Inhalt */
+      .container {
+        position: relative;
+        z-index: 1;
+        color: white; /* Example for text on top */
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem 1rem;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      /* Titel und Untertitel */
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive Schriftgröße */
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        font-weight: 800;
+        margin-bottom: 2.5rem;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Countdown-Styling */
+      #countdown {
+        display: flex;
+        flex-wrap: wrap; /* Erlaubt Umbruch auf sehr kleinen Bildschirmen */
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1rem;
+        min-width: 90px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .countdown-item span {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .countdown-item p {
+        font-size: 0.9rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 0.5rem;
+      }
+
+      /* Abschließender Hinweis */
+      .footer-note {
+        font-size: 0.9rem;
+        font-style: italic;
+        max-width: 600px;
+      }
+
+      /* Fade-In Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Media Query für kleinere Bildschirme */
+      @media (max-width: 480px) {
+        #countdown {
+          gap: 0.8rem;
+        }
+        .countdown-item {
+          min-width: 75px;
+          padding: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-container">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="IMG_2140.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="container">
+      <!-- 
+         * PASST HIER EURE NAMEN AN 
+        -->
+
+      <h1 class="bride-groom">Isabella & Michael</h1>
+      <p class="subtitle">Wir sagen JA! - Save the Date</p>
+
+      <div id="countdown">
+        <!-- Die Countdown-Elemente werden hier durch JavaScript eingefügt -->
+        <div id="countdown-message" style="display: none"></div>
+        <div class="countdown-item">
+          <span id="days">00</span>
+          <p>Tage</p>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          <p>Stunden</p>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          <p>Minuten</p>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">00</span>
+          <p>Sekunden</p>
+        </div>
+      </div>
+
+      <h2>Der Countdown läuft – seid bereit für unsere Hochzeitsfeier</h2>
+
+      <h3>18.07.2026</h3>
+      <h3>Hamburg</h3>
+
+      <p class="footer-note">
+        Die offizielle Einladung mit allen Details folgt.
+      </p>
+    </div>
+
+    <script>
+      // PHASE 2: JavaScript - Robust, keine Abhängigkeiten
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- KONFIGURATION ---
+        // Tragt hier euer Hochzeitsdatum und die Uhrzeit ein.
+        // Format: 'YYYY-MM-DDTHH:MM:SS'
+        // Beispiel: 19. Juni 2026 um 14:00 Uhr
+        const weddingDate = new Date("2026-07-18T16:00:00").getTime();
+        // ---------------------
+
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+        const countdownEl = document.getElementById("countdown");
+        const countdownMessageEl = document.getElementById("countdown-message");
+
+        // Die Funktion, die den Countdown jede Sekunde aktualisiert
+        const updateCountdown = () => {
+          const now = new Date().getTime();
+          const distance = weddingDate - now;
+
+          // Wenn das Datum in der Zukunft liegt
+          if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Aktualisiere die HTML-Elemente. `padStart` sorgt für die führende Null.
+            daysEl.innerText = String(days).padStart(2, "0");
+            hoursEl.innerText = String(hours).padStart(2, "0");
+            minutesEl.innerText = String(minutes).padStart(2, "0");
+            secondsEl.innerText = String(seconds).padStart(2, "0");
+          } else {
+            // Wenn das Datum erreicht oder überschritten ist
+            clearInterval(countdownInterval);
+            countdownEl.innerHTML = "<h2>Die Party hat begonnen!</h2>";
+          }
+        };
+
+        // Starte den Countdown und führe die Funktion jede Sekunde aus
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Führe die Funktion einmal direkt aus, damit keine Verzögerung sichtbar ist
+        updateCountdown();
+      });
+    </script>
+  </body>
+</html>
