@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="ics.deps.min.js"></script>
+    <script src="ics.min.js"></script>
+
     <title>Save the Date | Isabella & Michael</title>
 
     <!-- Einbindung einer modernen, freundlichen Schriftart von Google Fonts -->
@@ -14,6 +17,9 @@
     />
 
     <style>
+      #download-ics {
+        cursor: pointer;
+      }
       @font-face {
         font-family: "MyCustomFont";
         src: url("./WhisperingSignature.ttf") format("truetype");
@@ -201,8 +207,24 @@
 
       <h2>Der Countdown läuft – seid bereit für unsere Hochzeitsfeier</h2>
 
-      <h3>18.07.2026</h3>
-      <h3>Hamburg</h3>
+      <div id="download-ics">
+        <div>
+          <h3>18.07.2026</h3>
+          <h3>Hamburg</h3>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-calendar-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"
+          />
+        </svg>
+      </div>
 
       <p class="footer-note">
         Die offizielle Einladung mit allen Details folgt.
@@ -210,13 +232,25 @@
     </div>
 
     <script>
-      // PHASE 2: JavaScript - Robust, keine Abhängigkeiten
+      document
+        .getElementById("download-ics")
+        .addEventListener("click", function () {
+          var cal = ics();
+
+          // Add an event: subject, description, location, start date/time, end date/time
+          cal.addEvent(
+            "Bella & Michael Hochzeit",
+            "",
+            "Hamburg",
+            "7/18/2026",
+            "7/18/2026"
+          );
+
+          // Download the ICS file
+          cal.download("Hochzeit_Isabella_Michael");
+        });
 
       document.addEventListener("DOMContentLoaded", () => {
-        // --- KONFIGURATION ---
-        // Tragt hier euer Hochzeitsdatum und die Uhrzeit ein.
-        // Format: 'YYYY-MM-DDTHH:MM:SS'
-        // Beispiel: 19. Juni 2026 um 14:00 Uhr
         const weddingDate = new Date("2026-07-18T16:00:00").getTime();
         // ---------------------
 
